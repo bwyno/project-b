@@ -1,8 +1,12 @@
 import React from "react";
 import { Product } from "../../models/product";
+import { NavLink } from "react-router-dom";
+import { UserContext } from "../../context/user";
 
 export const Card = ({ data }: { data: Product }) => {
   const [hover, setHover] = React.useState<boolean>(false);
+  const [quantity, setQuantity] = React.useState<number>(0);
+  const { addItemToCart } = React.useContext(UserContext);
   return (
     <div className="flex items-center justify-center relative">
       {hover && (
@@ -15,10 +19,48 @@ export const Card = ({ data }: { data: Product }) => {
           }}
           className="absolute z-10 flex flex-col items-center justify-center gap-[10px]"
         >
-          <div className="hover:bg-blue-400 bg-blue-200 rounded-[10px] text-[16px] w-[140px] h-[40px] border-blue-500 flex items-center justify-center select-none cursor-pointer">
-            View Product
+          <NavLink to={`/products/${data.id}`}>
+            <div className="hover:bg-blue-400 bg-blue-200 rounded-[10px] text-[16px] w-[140px] h-[40px] border-blue-500 flex items-center justify-center select-none cursor-pointer">
+              View Product
+            </div>
+          </NavLink>
+          <div>
+            <input
+              className="w-[50px] rounded-[20px] px-2 text-center"
+              type="text"
+              placeholder="quantity"
+              value={quantity.toString()}
+              onChange={(e) => {
+                const inputValue = e.target.value;
+                if (/^\d*$/.test(inputValue)) {
+                  const clampedValue = Math.min(
+                    Number(inputValue),
+                    data.stockAvailable
+                  );
+                  setQuantity(clampedValue);
+                }
+              }}
+              maxLength={3}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  e.preventDefault();
+                  if (quantity !== 0) {
+                    addItemToCart({ ...data, quantity: quantity });
+                    setQuantity(0);
+                  }
+                }
+              }}
+            />
           </div>
-          <div className="hover:bg-blue-400 bg-blue-200 rounded-[10px] text-[16px] w-[140px] h-[40px] border-blue-500 flex items-center justify-center select-none cursor-pointer">
+          <div
+            onClick={() => {
+              if (quantity !== 0) {
+                addItemToCart({ ...data, quantity: quantity });
+                setQuantity(0);
+              }
+            }}
+            className="hover:bg-blue-400 bg-blue-200 rounded-[10px] text-[16px] w-[140px] h-[40px] border-blue-500 flex items-center justify-center select-none cursor-pointer"
+          >
             Add to Cart
           </div>
         </div>
