@@ -5,6 +5,7 @@ export interface Product {
   stockAvailable: number;
   imgSrc: string;
   description?: string;
+  otherImageSrcs: string[];
 }
 
 export interface SelectedProduct extends Product {

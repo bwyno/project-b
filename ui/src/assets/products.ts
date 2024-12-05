@@ -6,6 +6,7 @@ export const products = {
       price: 12.41,
       stockAvailable: 12,
       imgSrc: "product-a/src",
+      otherImageSrcs: ["1", "2", "3"],
       description:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
     },
@@ -15,6 +16,7 @@ export const products = {
       price: 35.2,
       stockAvailable: 13,
       imgSrc: "product-b/src",
+      otherImageSrcs: ["1", "2", "3"],
       description:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
     },
@@ -24,6 +26,7 @@ export const products = {
       price: 1.27,
       stockAvailable: 14,
       imgSrc: "product-c/src",
+      otherImageSrcs: ["1", "2", "3"],
       description:
         "Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Vivamus suscipit tortor eget felis porttitor volutpat.",
     },
@@ -33,6 +36,7 @@ export const products = {
       price: 42.5,
       stockAvailable: 8,
       imgSrc: "product-d/src",
+      otherImageSrcs: ["1", "2", "3"],
       description:
         "Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Donec sollicitudin molestie malesuada.",
     },
@@ -42,6 +46,7 @@ export const products = {
       price: 78.0,
       stockAvailable: 5,
       imgSrc: "product-e/src",
+      otherImageSrcs: ["1", "2", "3"],
       description:
         "Donec rutrum congue leo eget malesuada. Nulla quis lorem ut libero malesuada feugiat.",
     },
@@ -51,6 +56,7 @@ export const products = {
       price: 15.75,
       stockAvailable: 25,
       imgSrc: "product-f/src",
+      otherImageSrcs: ["1", "2", "3"],
       description:
         "Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Proin eget tortor risus.",
     },
@@ -60,6 +66,7 @@ export const products = {
       price: 10.99,
       stockAvailable: 20,
       imgSrc: "product-g/src",
+      otherImageSrcs: ["1", "2", "3"],
       description:
         "Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae.",
     },
@@ -69,6 +76,7 @@ export const products = {
       price: 60.0,
       stockAvailable: 2,
       imgSrc: "product-h/src",
+      otherImageSrcs: ["1", "2", "3"],
       description:
         "Cras ultricies ligula sed magna dictum porta. Pellentesque in ipsum id orci porta dapibus.",
     },
@@ -78,6 +86,7 @@ export const products = {
       price: 23.4,
       stockAvailable: 18,
       imgSrc: "product-i/src",
+      otherImageSrcs: ["1", "2", "3"],
       description:
         "Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Sed porttitor lectus nibh.",
     },
@@ -87,6 +96,7 @@ export const products = {
       price: 99.99,
       stockAvailable: 1,
       imgSrc: "product-j/src",
+      otherImageSrcs: [],
       description:
         "Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Nulla porttitor accumsan tincidunt.",
     },
