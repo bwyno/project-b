@@ -8,7 +8,7 @@ export class Product {
   @Column()
   name: string;
 
-  @Column()
+  @Column("decimal")
   price: number;
 
   @Column()
@@ -20,6 +20,6 @@ export class Product {
   @Column({ nullable: true })
   description?: string;
 
-  @Column("simple-array", { nullable: true })
-  otherImageSrcs: string[];
+  @Column("text", {array: true, nullable: true})
+  otherImgSrcs: string[];
 }

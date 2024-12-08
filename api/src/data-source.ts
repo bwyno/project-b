@@ -1,18 +1,16 @@
+import dotenv from "dotenv";
 import { DataSource, DataSourceOptions } from "typeorm";
+import { Product } from "./entity/Product";
 
+dotenv.config();
 export const AppDataSource = new DataSource({
-  type: "mysql",
+  type: "postgres",
   host: process.env.DB_HOST || "localhost",
-  port: 3306,
-  username: "root",
-  password: "test",
-  database: "test",
+  port: Number(process.env.DB_PORT) || 5432,
+  username: process.env.DB_USERNAME,
+  password: process.env.DB_PASSWORD || "test",
+  database: process.env.DB_NAME || "test",
+  entities: [Product]
 });
 
-AppDataSource.initialize()
-  .then(() => {
-    console.log("Data Source has been initialized!");
-  })
-  .catch((err) => {
-    console.error("Error during Data Source initialization", err);
-  });
+export const productRepository = AppDataSource.getRepository(Product);
