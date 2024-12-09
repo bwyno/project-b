@@ -20,6 +20,11 @@ export class Product {
   @Column({ nullable: true })
   description?: string;
 
-  @Column("text", {array: true, nullable: true})
+  // Postgresql Array Column
+  // @Column("text", {array: true, nullable: true})
+  // otherImgSrcs: string[];
+
+  //Mysql Array Column
+  @Column("simple-array", { nullable: true })
   otherImgSrcs: string[];
 }

@@ -7,6 +7,9 @@ export const deleteById = async (
 ) => {
   try {
     const data = await productRepository.delete({ id: req.params.id });
+    if (!data) {
+      res.status(404).json({ data: { error: "Resource not found" } });
+    }
     res.status(200).send({ data: data });
   } catch (e) {
     console.log(e);

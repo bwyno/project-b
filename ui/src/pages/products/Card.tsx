@@ -1,12 +1,15 @@
 import React from "react";
 import { Product } from "../../models/product";
-import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../context/user";
+import { ProductContext } from "../../context/products";
 
 export const Card = ({ data }: { data: Product }) => {
   const [hover, setHover] = React.useState<boolean>(false);
   const [quantity, setQuantity] = React.useState<number>(0);
   const { addItemToCart } = React.useContext(UserContext);
+  const { setProduct } = React.useContext(ProductContext);
+  const navigate = useNavigate();
   return (
     <div className="flex items-center justify-center relative">
       {hover && (
@@ -19,11 +22,16 @@ export const Card = ({ data }: { data: Product }) => {
           }}
           className="absolute z-10 flex flex-col items-center justify-center gap-[10px]"
         >
-          <NavLink to={`/products/${data.id}`}>
-            <div className="hover:bg-blue-400 bg-blue-200 rounded-[10px] text-[16px] w-[140px] h-[40px] border-blue-500 flex items-center justify-center select-none cursor-pointer">
-              View Product
-            </div>
-          </NavLink>
+          <div
+            onClick={() => {
+              setProduct(data);
+              navigate(`/products/${data.id}`);
+            }}
+            className="hover:bg-blue-400 bg-blue-200 rounded-[10px] text-[16px] w-[140px] h-[40px] border-blue-500 flex items-center justify-center select-none cursor-pointer"
+          >
+            View Product
+          </div>
+
           <div>
             <input
               className="w-[50px] rounded-[20px] px-2 text-center"
@@ -84,11 +92,13 @@ export const Card = ({ data }: { data: Product }) => {
         </div>
         <div className="w-[180px] flex flex-col gap-2">
           <div className="text-[20px] uppercase text-center">{data.name}</div>
-          <div className="text-[15px]">PRICE: {data.price.toFixed(2)} PHP</div>
+          <div className="text-[15px]">PRICE: {data.price} PHP</div>
           <div className="text-[14px] italic">
-            {data.description
-              ? `${data.description.slice(0, 120)}...`
-              : "No description given"}
+            {!data.description
+              ? "No description available"
+              : data.description.length < 120
+              ? data.description
+              : `${data.description.slice(0, 120)}...`}
           </div>
         </div>
       </div>
